@@ -1,0 +1,28 @@
+version: '3.8'
+
+networks:
+  vpn_net:
+    name: vpn_net
+    external: false
+    driver: bridge
+    driver_opts:
+      "com.docker.network.bridge.name": "vpn_net"
+      "com.docker.network.driver.mtu": "1500"
+
+services:
+  shadowsocks:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    image: shadowsocks:v2ray
+    container_name: shadowsocks
+    restart: always
+    hostname: shadowsocks
+    ports:
+      - "8443:443"
+    volumes:
+      - ./config:/config
+      - ./certs:/certs
+    command: ["ss-server", "-c", "/config/config.json"]
+    networks:
+      vpn_net:

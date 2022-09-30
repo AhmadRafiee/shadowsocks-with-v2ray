@@ -1,0 +1,14 @@
+{
+    "server":"0.0.0.0",
+    "server_port":"443",
+    "local_port":"1080",
+    "password":"<PASSWORD>",
+    "timeout":300,
+    "method":"chacha20-ietf-poly1305",
+    "nameserver":"8.8.8.8,4.2.2.4",
+    "workers":"8",
+    "plugin":"v2ray-plugin",
+    "plugin_opts":"server;tls;cert=/certs/<CERT_PATH>;key=/certs/<KEY_PATH>;host=<DOMAIN_NAME>;loglevel=none",
+    "fast_open":true,
+    "reuse_port":true
+}
